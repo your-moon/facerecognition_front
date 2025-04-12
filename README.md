@@ -1,12 +1,73 @@
-# React + Vite
+# Face Recognition Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Real-time face recognition web application with React.
 
-Currently, two official plugins are available:
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Install Yarn
+```bash
+# Using npm
+npm install -g yarn
 
-## Expanding the ESLint configuration
+# On macOS with Homebrew
+brew install yarn
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# On Windows with Chocolatey
+choco install yarn
+```
+
+### 2. Install Dependencies
+```bash
+yarn install
+```
+
+### 3. Set Environment
+Create `.env` file:
+```env
+VITE_BACKEND_URL=http://your-backend-url
+```
+
+### 4. Run Application
+
+#### Development Mode
+```bash
+yarn dev
+```
+Visit `http://localhost:5173`
+
+#### Production with Docker
+```bash
+# Build image
+docker build -t face-recognition-frontend .
+
+# Run container
+docker run -d -p 80:80 \
+  -e VITE_BACKEND_URL=http://your-backend-url \
+  --name face-recognition-app \
+  face-recognition-frontend
+```
+Visit `http://localhost`
+
+## Requirements
+- Node.js v16+
+- Webcam
+- Modern browser (Chrome recommended)
+
+## Features
+- Real-time face detection
+- Live camera feed
+- Verification badge (75%+ confidence)
+- Detailed results page
+- Responsive design
+
+## Troubleshooting
+
+### Camera Issues
+- Allow camera permissions in browser
+- Check if camera is used by another app
+- Use good lighting
+
+### Docker Issues
+- Make sure port 80 is free
+- Check logs: `docker logs face-recognition-app`
+- Verify backend URL is correct
